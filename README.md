@@ -105,7 +105,7 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 ## Dataset Setup
 
-Download the [HAM10000 dataset from Kaggle](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000) and place it so the directory structure looks like:
+Download the [HAM10000 dataset from Kaggle](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000) and place it so the directory.
 
 ---
 
