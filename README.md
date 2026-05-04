@@ -1,9 +1,7 @@
 # Skin Cancer Detection — Ensemble Deep Learning Model
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-
-> **Live Demo:** [rajasri77/skin-cancer-detector on HF Spaces](https://huggingface.co/spaces/rajasri77/skin-cancer-detector)  
-> **Model Weights:** [rajasri77/skin-cancer-model on HF Hub](https://huggingface.co/rajasri77/skin-cancer-model) (556 MB)
+> **Live Demo:** [skin-cancer-detector](https://huggingface.co/spaces/rajasri77/skin-cancer-detector)  
+> **Model Weights:** [skin-cancer-model](https://huggingface.co/rajasri77/skin-cancer-model) (556 MB)
 
 A skin lesion classification system built on the HAM10000 dermatoscopy dataset. The model fuses **ResNet50** and **EfficientNetV2-S** backbones into a hybrid ensemble that classifies 7 types of skin lesions from dermoscopic images, with full interpretability via Grad-CAM.
 
@@ -239,18 +237,7 @@ skin-cancer-detection/
 
 ## Dependencies
 
-| Package | Version |
-|---------|---------|
-| torch | 2.11.0 |
-| torchvision | 0.26.0 |
-| timm | ≥1.0.0 |
-| numpy | 1.26.4 |
-| pandas | ≥2.0.0 |
-| scikit-learn | ≥1.3.0 |
-| pillow | 10.2.0 |
-| matplotlib | ≥3.7.0 |
-| seaborn | ≥0.12.0 |
-| tqdm | ≥4.65.0 |
+See [`requirements.txt`](requirements.txt).
 
 ---
 
