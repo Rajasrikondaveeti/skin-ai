@@ -6,45 +6,9 @@
 A skin lesion classification system built on the HAM10000 dermatoscopy dataset. The model fuses **ResNet50** and **EfficientNetV2-S** backbones into a hybrid ensemble that classifies 7 types of skin lesions from dermoscopic images, with full interpretability via Grad-CAM.
 
 ---
-
-## Project Status
-
-| Component | Status |
-|-----------|--------|
-| Exploratory Data Analysis | Complete |
-| Data Pipeline & Augmentation | Complete |
-| Hybrid Ensemble Architecture | Complete |
-| Training Loop with Checkpointing | Complete |
-| Evaluation (Accuracy, F1, Confusion Matrix) | Complete |
-| Single-Image Inference | Complete |
-| Grad-CAM Interpretability | Complete |
-| Model Weights | Hosted on HF Hub |
-| Gradio App | Live on HF Spaces |
-
+Upload a skin photo and the AI will classify it into one of 7 lesion types.
+![alt text](image.png)
 ---
-
-## Model Performance
-
-| Metric | Value |
-|--------|-------|
-| Best Validation Accuracy | **88.67%** (Epoch 18) |
-| Best Validation Loss | **0.398** (Epoch 16) |
-| Final Training Loss | **0.055** (Epoch 20) |
-| Epochs Trained | 20 |
-
-### Training Curve
-
-| Epoch | Train Loss | Val Loss | Val Accuracy |
-|-------|-----------|----------|-------------|
-| 1 | 1.237 | 0.951 | 57.6% |
-| 5 | 0.453 | 0.544 | 76.8% |
-| 10 | 0.175 | 0.446 | 83.5% |
-| 15 | 0.080 | 0.448 | 87.1% |
-| 18 | 0.063 | 0.412 | **88.7%** |
-| 20 | 0.055 | 0.412 | 88.5% |
-
----
-
 ## Architecture
 
 The model is a **dual-branch fusion ensemble** — two CNNs fine-tuned on HAM10000 run independently, their deep feature vectors are concatenated, then passed through a shared MLP classifier.
@@ -143,17 +107,6 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 Download the [HAM10000 dataset from Kaggle](https://www.kaggle.com/datasets/kmader/skin-cancer-mnist-ham10000) and place it so the directory structure looks like:
 
-```
-skin-cancer-detection/
-├── skin-cancer-mnist-ham10000/
-│   ├── HAM10000_metadata.csv
-│   ├── HAM10000_images_part_1/   ← 5,000 images
-│   └── HAM10000_images_part_2/   ← 5,015 images
-├── Ensemble_Analysis_Master.ipynb
-├── Skin_Cancer_EDA.ipynb
-└── requirements.txt
-```
-
 ---
 
 ## Usage
@@ -198,56 +151,9 @@ Then open `http://localhost:7860` in your browser.
 
 ---
 
-## Training Configuration
-
-| Hyperparameter | Value |
-|----------------|-------|
-| Input size | 224×224 |
-| Batch size | 32 |
-| Epochs | 20 |
-| Optimiser | AdamW |
-| Learning rate | 1e-4 |
-| LR schedule | CosineAnnealingLR |
-| Loss | CrossEntropyLoss + class weights |
-| Train/Val split | 80/20 stratified |
-| Dropout | 0.3 (fc1), 0.2 (fc2) |
-
----
-
-## Project Structure
-
-```
-skin-cancer-detection/
-├── Ensemble_Analysis_Master.ipynb   # Main ML pipeline (train → eval → predict → interpret)
-├── Skin_Cancer_EDA.ipynb            # Exploratory data analysis & preprocessing
-├── requirements.txt                 # Python dependencies for local training
-├── history.json                     # Training curves (loss & accuracy per epoch)
-├── hf_space/
-│   ├── app.py                       # Gradio web app with Grad-CAM
-│   ├── requirements.txt             # HF Spaces dependencies
-│   └── README.md                    # HF Spaces model card
-├── skin-cancer-mnist-ham10000/      # Dataset directory (not tracked in git)
-│   ├── HAM10000_metadata.csv
-│   ├── HAM10000_images_part_1/
-│   └── HAM10000_images_part_2/
-└── .gitignore
-```
-
----
-
 ## Dependencies
 
 See [`requirements.txt`](requirements.txt).
-
----
-
-## Potential Improvements
-
-- **Test-time augmentation (TTA)** — average predictions over multiple augmented views
-- **Mixup / CutMix** — stronger regularisation for the minority classes
-- **Vision Transformer branch** — add a ViT-B/16 as a third ensemble member
-- **ISIC 2019/2020 data** — extend training to 25,000+ images for better generalisation
-- **ONNX export** — for deployment to edge devices or web APIs
 
 ---
 
