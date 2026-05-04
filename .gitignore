@@ -166,3 +166,5 @@ hmnist_64_64_RBG.csv
 skin-cancer-mnist-ham10000/
 best_model.pth
 *.pth
+PROJECT_REFERENCE.md
+generate_architecture.py

@@ -51,6 +51,8 @@ A skin lesion classification system built on the HAM10000 dermatoscopy dataset. 
 
 The model is a **dual-branch fusion ensemble** — two CNNs fine-tuned on HAM10000 run independently, their deep feature vectors are concatenated, then passed through a shared MLP classifier.
 
+![Architecture Diagram](architecture.png)
+
 ```
 Input Image (224x224 RGB)
         │
